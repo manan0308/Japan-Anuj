@@ -382,7 +382,7 @@ export default function ItineraryTab() {
                     </div>
                     {activity.location && (
                       <a
-                        href={getMapsUrl(activity.location, activity.city)}
+                        href={getMapsUrl(activity.location)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-[11px] text-muted-foreground flex items-center gap-1 mt-1.5 hover:text-primary transition-colors active:text-primary"
