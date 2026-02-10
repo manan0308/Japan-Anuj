@@ -312,52 +312,40 @@ export default function TodayTab({ settings }) {
           <Clock size={12} />
           Today's Schedule
         </h2>
-        <div className="space-y-1">
+        <div className="space-y-2">
           {activities.length === 0 ? (
             <p className="text-sm text-muted-foreground py-8 text-center">
               No activities for today
             </p>
           ) : (
             activities.map((activity, i) => (
-              <div
+              <Card
                 key={activity.id}
                 data-testid={`timeline-activity-${i}`}
-                className="flex gap-3 group"
+                className="rounded-xl border-border/40 transition-shadow duration-200 hover:shadow-md"
               >
-                {/* Timeline connector */}
-                <div className="flex flex-col items-center w-12 shrink-0">
-                  <span className="text-[10px] font-mono text-muted-foreground tabular-nums">
-                    {activity.time || "—"}
-                  </span>
-                  <div className="w-px flex-1 bg-border/60 mt-1" />
-                </div>
-
-                {/* Activity card */}
-                <Card className="flex-1 mb-2 rounded-xl border-border/40 transition-shadow duration-200 hover:shadow-md">
-                  <CardContent className="p-3">
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <StatusIcon status={activity.status} />
-                          <span
-                            className={`text-sm font-medium leading-snug ${
-                              activity.status === "completed"
-                                ? "line-through text-muted-foreground"
-                                : ""
-                            }`}
-                          >
-                            {activity.name}
+                <CardContent className="p-3">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                        <StatusIcon status={activity.status} />
+                        <span
+                          className={`text-sm font-medium leading-snug ${
+                            activity.status === "completed"
+                              ? "line-through text-muted-foreground"
+                              : ""
+                          }`}
+                        >
+                          {activity.name}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        {activity.time && (
+                          <span className="text-[10px] font-bold font-mono bg-primary/15 text-primary px-2 py-0.5 rounded-full">
+                            {formatTime12(activity.time)}
                           </span>
-                        </div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <CategoryPill category={activity.category} />
-                          {activity.location && (
-                            <span className="text-[10px] text-muted-foreground flex items-center gap-0.5">
-                              <MapPin size={9} />
-                              {activity.location}
-                            </span>
-                          )}
-                        </div>
+                        )}
+                        <CategoryPill category={activity.category} />
                       </div>
                       {activity.location && (
                         <a
@@ -365,20 +353,23 @@ export default function TodayTab({ settings }) {
                           target="_blank"
                           rel="noopener noreferrer"
                           data-testid={`maps-link-${i}`}
-                          className="p-1.5 rounded-lg hover:bg-accent transition-colors shrink-0"
+                          className="text-[11px] text-muted-foreground flex items-center gap-1 mt-1.5 hover:text-primary transition-colors active:text-primary"
+                          onClick={(e) => e.stopPropagation()}
                         >
-                          <ExternalLink size={14} className="text-muted-foreground" />
+                          <MapPin size={10} />
+                          <span className="underline underline-offset-2">{activity.location}</span>
+                          <ExternalLink size={9} />
                         </a>
                       )}
                     </div>
-                    {activity.notes && (
-                      <p className="text-[10px] text-muted-foreground mt-1.5 pl-5">
-                        {activity.notes}
-                      </p>
-                    )}
-                  </CardContent>
-                </Card>
-              </div>
+                  </div>
+                  {activity.notes && (
+                    <p className="text-[10px] text-muted-foreground/80 mt-1.5 italic">
+                      {activity.notes}
+                    </p>
+                  )}
+                </CardContent>
+              </Card>
             ))
           )}
         </div>
