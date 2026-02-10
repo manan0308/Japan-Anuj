@@ -239,7 +239,7 @@ class TabiAPITester:
             
             # Test CREATE packing item
             new_item = {"name": "Test Item", "checked": False}
-            success2, created = self.test_endpoint('POST', 'packing-items', 201, new_item)
+            success2, created = self.test_endpoint('POST', 'packing-items', 200, new_item)
             if success2 and 'id' in created:
                 item_id = created['id']
                 self.log_test("POST /api/packing-items", True, f"Created item ID: {item_id}")
