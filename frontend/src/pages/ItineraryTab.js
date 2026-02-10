@@ -201,7 +201,7 @@ export default function ItineraryTab() {
   const getMapsUrl = (location) => {
     if (!location) return null;
     const q = location.replace(/\s+/g, "+");
-    return `https://maps.google.com/?q=${q}`;
+    return `https://www.google.com/maps/place/${q}`;
   };
 
   return (
