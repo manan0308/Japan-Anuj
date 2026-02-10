@@ -198,9 +198,10 @@ export default function ItineraryTab() {
     }
   };
 
-  const getMapsUrl = (location, city) => {
+  const getMapsUrl = (location) => {
     if (!location) return null;
-    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location + " " + city + " Japan")}`;
+    const q = location.replace(/\s+/g, "+");
+    return `https://maps.google.com/?q=${q}`;
   };
 
   return (
