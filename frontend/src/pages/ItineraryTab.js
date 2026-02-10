@@ -380,10 +380,18 @@ export default function ItineraryTab() {
                       </Badge>
                     </div>
                     {activity.location && (
-                      <p className="text-[10px] text-muted-foreground mt-1 flex items-center gap-0.5">
-                        <MapPin size={9} />
-                        {activity.location}
-                      </p>
+                      <a
+                        href={getMapsUrl(activity.location, activity.city)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[11px] text-muted-foreground flex items-center gap-1 mt-1.5 hover:text-primary transition-colors active:text-primary"
+                        data-testid={`maps-btn-${i}`}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <MapPin size={10} />
+                        <span className="underline underline-offset-2">{activity.location}</span>
+                        <ExternalLink size={9} />
+                      </a>
                     )}
                     {activity.notes && (
                       <p className="text-[10px] text-muted-foreground/80 mt-1 italic">
@@ -392,17 +400,6 @@ export default function ItineraryTab() {
                     )}
                   </div>
                   <div className="flex flex-col gap-1 shrink-0">
-                    {activity.location && (
-                      <a
-                        href={getMapsUrl(activity.location, activity.city)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-1.5 rounded-lg hover:bg-accent transition-colors"
-                        data-testid={`maps-btn-${i}`}
-                      >
-                        <ExternalLink size={13} className="text-muted-foreground" />
-                      </a>
-                    )}
                     <button
                       onClick={() => openEdit(activity)}
                       className="p-1.5 rounded-lg hover:bg-accent transition-colors"
