@@ -122,6 +122,22 @@ export default function CurrencyTab({ settings }) {
     }
   };
 
+  const addCustomCategory = () => {
+    const cat = newCatInput.trim().toLowerCase();
+    if (!cat) return;
+    if (DEFAULT_EXPENSE_CATS.includes(cat) || customCats.includes(cat)) {
+      toast.error("Category already exists");
+      return;
+    }
+    setCustomCats((prev) => [...prev, cat]);
+    setExpForm({ ...expForm, category: cat });
+    setNewCatInput("");
+    setShowAddCat(false);
+    toast.success(`Category "${cat}" added`);
+  };
+
+  const allCategories = [...DEFAULT_EXPENSE_CATS, ...customCats];
+
   // Calculate totals
   const totalJpy = expenses.reduce((sum, e) => sum + e.amount_jpy, 0);
   const totalInr = totalJpy * rate;
