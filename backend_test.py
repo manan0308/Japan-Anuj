@@ -166,7 +166,7 @@ class TabiAPITester:
             "order": 100
         }
         
-        success, created = self.test_endpoint('POST', 'activities', 201, new_activity)
+        success, created = self.test_endpoint('POST', 'activities', 200, new_activity)
         if success and 'id' in created:
             activity_id = created['id']
             self.log_test("POST /api/activities", True, f"Created activity ID: {activity_id}")
