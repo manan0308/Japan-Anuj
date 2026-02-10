@@ -23,7 +23,7 @@ import {
 import api from "@/lib/api";
 
 const QUICK_AMOUNTS = [100, 500, 1000, 5000, 10000];
-const EXPENSE_CATS = ["food", "transport", "shopping", "experience", "accommodation"];
+const DEFAULT_EXPENSE_CATS = ["food", "transport", "shopping", "experience", "accommodation"];
 const CAT_COLORS = {
   food: "#f97316",
   transport: "#a855f7",
@@ -40,6 +40,9 @@ export default function CurrencyTab({ settings }) {
   const [conversions, setConversions] = useState([]);
   const [expForm, setExpForm] = useState({ amount_jpy: "", category: "food", note: "", date: new Date().toISOString().split("T")[0] });
   const [showHistory, setShowHistory] = useState(false);
+  const [customCats, setCustomCats] = useState([]);
+  const [newCatInput, setNewCatInput] = useState("");
+  const [showAddCat, setShowAddCat] = useState(false);
 
   useEffect(() => {
     if (settings?.exchange_rate) setRate(settings.exchange_rate);
