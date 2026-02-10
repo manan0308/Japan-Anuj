@@ -1,0 +1,174 @@
+{
+  "brand_identity": {
+    "name": "Tabi (旅)",
+    "tagline": "The Mindful Companion",
+    "core_philosophy": "Omotenashi (Anticipatory Hospitality)",
+    "visual_theme": "Japanese Minimalism x Warm Utility",
+    "emotional_tone": ["Calm", "Reliable", "Tactile", "Premium"]
+  },
+  "typography": {
+    "font_family_primary": "Manrope, sans-serif",
+    "font_family_secondary": "Noto Sans JP, sans-serif",
+    "font_url": "https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap",
+    "scale": {
+      "h1": "text-4xl font-bold tracking-tight leading-none",
+      "h2": "text-3xl font-semibold tracking-tight",
+      "h3": "text-2xl font-medium tracking-normal",
+      "body": "text-base font-normal leading-relaxed text-muted-foreground",
+      "label": "text-xs font-semibold uppercase tracking-widest text-muted-foreground/80",
+      "mono": "font-mono text-sm tracking-tight"
+    }
+  },
+  "colors": {
+    "strategy": "Dual Theme: Warm Stone (Dark) & Washi Paper (Light)",
+    "palette": {
+      "light": {
+        "background": "#FAFAF9", 
+        "foreground": "#1C1917",
+        "card": "#FFFFFF",
+        "card_foreground": "#1C1917",
+        "primary": "#D94625",
+        "primary_foreground": "#FFFFFF",
+        "secondary": "#E7E5E4",
+        "secondary_foreground": "#1C1917",
+        "accent": "#F5F5F4",
+        "accent_foreground": "#1C1917",
+        "muted": "#F5F5F4",
+        "muted_foreground": "#78716C",
+        "border": "#E7E5E4"
+      },
+      "dark": {
+        "background": "#0C0A09",
+        "foreground": "#FAFAF9",
+        "card": "#1C1917",
+        "card_foreground": "#FAFAF9",
+        "primary": "#E05D44",
+        "primary_foreground": "#FFFFFF",
+        "secondary": "#292524",
+        "secondary_foreground": "#FAFAF9",
+        "accent": "#292524",
+        "accent_foreground": "#FAFAF9",
+        "muted": "#292524",
+        "muted_foreground": "#A8A29E",
+        "border": "#292524"
+      }
+    },
+    "special_colors": {
+      "vermilion": "#E05D44",
+      "matcha": "#7C8A73",
+      "indigo": "#434C5E",
+      "sakura": "#F4D5D5",
+      "gold": "#D4AF37",
+      "success": "#10B981",
+      "warning": "#F59E0B",
+      "error": "#EF4444"
+    }
+  },
+  "layout_strategies": {
+    "mobile_nav": {
+      "type": "Fixed Bottom Bar",
+      "style": "Glassmorphism with blur-xl",
+      "height": "h-16 or h-20",
+      "icons": "Lucide React (Home, Map, Banknote, Backpack, Settings)"
+    },
+    "dashboard_grid": {
+      "type": "Bento Grid",
+      "classes": "grid grid-cols-2 gap-3 p-4",
+      "items": [
+        "Clock Widget (col-span-2)",
+        "Weather (col-span-1)",
+        "Next Activity (col-span-1)",
+        "Timeline (col-span-2 row-span-2)"
+      ]
+    },
+    "itinerary_view": {
+      "type": "Vertical Timeline",
+      "connector_style": "dashed line with nodes",
+      "card_style": "Expandable Accordion"
+    }
+  },
+  "component_styles": {
+    "cards": {
+      "base": "rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300",
+      "hover": "hover:shadow-md hover:border-primary/20 hover:-translate-y-0.5",
+      "active": "active:scale-[0.98]"
+    },
+    "buttons": {
+      "primary": "rounded-full bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 px-6 font-medium transition-transform active:scale-95",
+      "secondary": "rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-6 font-medium",
+      "ghost": "rounded-full hover:bg-accent hover:text-accent-foreground h-10 px-4",
+      "icon": "rounded-full w-10 h-10 p-0 flex items-center justify-center"
+    },
+    "inputs": {
+      "base": "rounded-xl border border-input bg-transparent px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+    }
+  },
+  "visual_enhancers": {
+    "textures": {
+      "noise": "bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none fixed inset-0 z-50",
+      "dots": "bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#2a2a2a_1px,transparent_1px)]"
+    },
+    "shadows": {
+      "soft": "shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+      "glow": "shadow-[0_0_15px_rgba(224,93,68,0.3)]"
+    },
+    "animations": {
+      "page_transition": "initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}",
+      "micro_interaction": "whileTap={{ scale: 0.95 }}"
+    }
+  },
+  "image_assets": {
+    "hero_tokyo": "https://images.unsplash.com/photo-1748878665615-de9ce330cd35?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHwxfHxreW90byUyMHN0cmVldCUyMHRva3lvJTIwdG93ZXIlMjBtb3VudCUyMGZ1amklMjBqYXBhbiUyMGNoZXJyeSUyMGJsb3Nzb20lMjBzdXNoaSUyMHJhbWVufGVufDB8fHx8MTc3MDcxMjYxMHww&ixlib=rb-4.1.0&q=85",
+    "kyoto_bamboo": "https://images.unsplash.com/photo-1681913783483-9deeafbbdc76?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHwyfHxreW90byUyMGJhbWJvbyUyMGZvcmVzdCUyMG9zYWthJTIwZG90b25ib3JpJTIwbmVvbiUyMHN1c2hpJTIwcGxhdGUlMjBzaGlua2Fuc2VuJTIwdHJhaW4lMjBqYXBhbiUyMG1pbmltYWxpc3QlMjBsYW5kc2NhcGV8ZW58MHx8fHwxNzcwNzEyNjMwfDA&ixlib=rb-4.1.0&q=85",
+    "kyoto_bamboo_person": "https://images.unsplash.com/photo-1741851374721-a546dc41561a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHwxfHxreW90byUyMGJhbWJvbyUyMGZvcmVzdCUyMG9zYWthJTIwZG90b25ib3JpJTIwbmVvbiUyMHN1c2hpJTIwcGxhdGUlMjBzaGlua2Fuc2VuJTIwdHJhaW4lMjBqYXBhbiUyMG1pbmltYWxpc3QlMjBsYW5kc2NhcGV8ZW58MHx8fHwxNzcwNzEyNjMwfDA&ixlib=rb-4.1.0&q=85",
+    "placeholders": {
+      "food": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=2670&auto=format&fit=crop",
+      "transport": "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=2574&auto=format&fit=crop"
+    }
+  },
+  "component_mappings": {
+    "ShadcnButton": "components/ui/button.jsx",
+    "ShadcnCard": "components/ui/card.jsx",
+    "ShadcnInput": "components/ui/input.jsx",
+    "ShadcnTabs": "components/ui/tabs.jsx",
+    "ShadcnScrollArea": "components/ui/scroll-area.jsx",
+    "ShadcnDialog": "components/ui/dialog.jsx",
+    "ShadcnSheet": "components/ui/sheet.jsx",
+    "ShadcnSonner": "components/ui/sonner.jsx"
+  },
+  "instructions_to_main_agent": [
+    "1. THEME SETUP: Implement the 'Warm Stone' and 'Washi Paper' themes in tailwind.config.js immediately. Do not use default black/white.",
+    "2. FONT SETUP: Import Manrope from Google Fonts in index.css.",
+    "3. MOBILE NAV: Create a fixed bottom navigation bar (z-50) using the glassmorphism style defined in layout_strategies.",
+    "4. BENTO DASHBOARD: Build the 'Today' tab using the bento grid layout. Prioritize the Dual Clock and Weather.",
+    "5. ITINERARY: Use the vertical timeline approach. Each day is a section, each activity is a card.",
+    "6. ANIMATIONS: Use framer-motion for simple entrance animations on the dashboard widgets.",
+    "7. DATA-TESTID: Ensure EVERY interactive element has a data-testid attribute (e.g., 'nav-home-btn', 'add-activity-btn').",
+    "8. NO AUTH: Do not build login screens. Start directly at the Today Dashboard.",
+    "9. ICONS: Use Lucide React (standard in Shadcn).",
+    "10. IMAGES: Use the provided Unsplash URLs for the specific sections. Use 'object-cover' and rounded corners.",
+    "11. TRANSPARENCY RULE: Do NOT use transparent backgrounds for headers/overlays without a blur or solid backing.",
+    "12. DATE PICKER: Use Shadcn Calendar, do NOT use input type='date'."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. In frontend design, this creates what users call the 'AI slop' aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy",
+    "Use glass-morphism effects with backdrop filters (12-24px blur)",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms. Always add transitions for specific interactive elements like button, input excluding transforms",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file. This disrupts the human natural reading flow of text",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯📚 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
+    "Main agent relies on these image URLs. Missing categories = main agent will use placeholder text which is FORBIDDEN",
+    "Prioritize using pre-existing components from src/components/ui when applicable",
+    "Create new components that match the style and conventions of existing components when needed",
+    "Examine existing components to understand the project's component patterns before creating new ones",
+    "Components MUST use named exports (export const ComponentName = ...)",
+    "Pages MUST use default exports (export default function PageName() {...})",
+    "Use sonner for toasts from /app/frontend/src/components/ui/sonner.jsx"
+  ]
+}
