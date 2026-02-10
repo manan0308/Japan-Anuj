@@ -56,6 +56,11 @@ export default function CurrencyTab({ settings }) {
       ]);
       setExpenses(exp);
       setConversions(conv);
+      // Derive custom categories from existing expenses
+      const existing = exp
+        .map((e) => e.category)
+        .filter((c) => !DEFAULT_EXPENSE_CATS.includes(c));
+      setCustomCats((prev) => [...new Set([...prev, ...existing])]);
     } catch (e) {
       console.error(e);
     }
