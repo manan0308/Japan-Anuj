@@ -242,22 +242,64 @@ export default function CurrencyTab({ settings }) {
               className="rounded-xl flex-1"
               data-testid="expense-amount-input"
             />
-            <Select
-              value={expForm.category}
-              onValueChange={(v) => setExpForm({ ...expForm, category: v })}
-            >
-              <SelectTrigger className="rounded-xl w-32" data-testid="expense-category-select">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {EXPENSE_CATS.map((c) => (
-                  <SelectItem key={c} value={c}>
-                    {c.charAt(0).toUpperCase() + c.slice(1)}
+            <div className="relative">
+              <Select
+                value={expForm.category}
+                onValueChange={(v) => {
+                  if (v === "__add_new__") {
+                    setShowAddCat(true);
+                  } else {
+                    setExpForm({ ...expForm, category: v });
+                  }
+                }}
+              >
+                <SelectTrigger className="rounded-xl w-36" data-testid="expense-category-select">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {allCategories.map((c) => (
+                    <SelectItem key={c} value={c}>
+                      {c.charAt(0).toUpperCase() + c.slice(1)}
+                    </SelectItem>
+                  ))}
+                  <SelectItem value="__add_new__">
+                    <span className="flex items-center gap-1 text-primary">
+                      <Plus size={12} /> Add New
+                    </span>
                   </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
+          {showAddCat && (
+            <div className="flex gap-2 animate-fade-in">
+              <Input
+                placeholder="New category name"
+                value={newCatInput}
+                onChange={(e) => setNewCatInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && addCustomCategory()}
+                className="rounded-xl flex-1 text-sm h-9"
+                data-testid="new-category-input"
+                autoFocus
+              />
+              <Button
+                size="sm"
+                className="rounded-full h-9"
+                onClick={addCustomCategory}
+                data-testid="add-category-btn"
+              >
+                Add
+              </Button>
+              <Button
+                size="sm"
+                variant="ghost"
+                className="rounded-full h-9"
+                onClick={() => { setShowAddCat(false); setNewCatInput(""); }}
+              >
+                Cancel
+              </Button>
+            </div>
+          )}
           <div className="flex gap-2">
             <Input
               placeholder="Note (optional)"
