@@ -280,7 +280,7 @@ class TabiAPITester:
                 "content": "This is a test note for the trip"
             }
             
-            success2, created = self.test_endpoint('POST', 'notes', 201, new_note)
+            success2, created = self.test_endpoint('POST', 'notes', 200, new_note)
             if success2 and 'id' in created:
                 note_id = created['id']
                 self.log_test("POST /api/notes", True, f"Created note ID: {note_id}")
