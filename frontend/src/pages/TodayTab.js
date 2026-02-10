@@ -87,10 +87,10 @@ function formatTime12(t) {
   return `${h12}:${m} ${ampm}`;
 }
 
-function getGoogleMapsUrl(location, city) {
+function getGoogleMapsUrl(location) {
   if (!location) return null;
-  const q = encodeURIComponent(`${location} ${city} Japan`);
-  return `https://www.google.com/maps/search/?api=1&query=${q}`;
+  const q = location.replace(/\s+/g, "+");
+  return `https://maps.google.com/?q=${q}`;
 }
 
 const StatusIcon = ({ status }) => {
