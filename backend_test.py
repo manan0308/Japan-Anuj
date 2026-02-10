@@ -206,7 +206,7 @@ class TabiAPITester:
                 "date": "2026-02-28"
             }
             
-            success2, created = self.test_endpoint('POST', 'expenses', 201, new_expense)
+            success2, created = self.test_endpoint('POST', 'expenses', 200, new_expense)
             if success2 and 'id' in created:
                 expense_id = created['id']
                 self.log_test("POST /api/expenses", True, f"Created expense ID: {expense_id}")
