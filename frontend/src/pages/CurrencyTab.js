@@ -143,7 +143,7 @@ export default function CurrencyTab({ settings }) {
   const totalInr = totalJpy * rate;
 
   // Chart data
-  const chartData = EXPENSE_CATS.map((cat) => ({
+  const chartData = allCategories.map((cat) => ({
     name: cat.charAt(0).toUpperCase() + cat.slice(1),
     key: cat,
     amount: expenses.filter((e) => e.category === cat).reduce((s, e) => s + e.amount_jpy, 0),
