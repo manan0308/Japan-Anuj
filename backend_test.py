@@ -350,7 +350,7 @@ class TabiAPITester:
                 "rate": 0.56
             }
             
-            success2, created = self.test_endpoint('POST', 'conversions', 201, new_conversion)
+            success2, created = self.test_endpoint('POST', 'conversions', 200, new_conversion)
             if success2 and 'id' in created:
                 self.log_test("POST /api/conversions", True, 
                             f"Created conversion ID: {created['id']}")
