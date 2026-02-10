@@ -312,23 +312,34 @@ export default function TodayTab({ settings }) {
           <Clock size={12} />
           Today's Schedule
         </h2>
-        <div className="space-y-2">
+        <div className="space-y-0">
           {activities.length === 0 ? (
             <p className="text-sm text-muted-foreground py-8 text-center">
               No activities for today
             </p>
           ) : (
             activities.map((activity, i) => (
-              <Card
+              <div
                 key={activity.id}
                 data-testid={`timeline-activity-${i}`}
-                className="rounded-xl border-border/40 transition-shadow duration-200 hover:shadow-md"
+                className="flex gap-3 group"
               >
-                <CardContent className="p-3">
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                        <StatusIcon status={activity.status} />
+                {/* Timeline connector */}
+                <div className="flex flex-col items-center w-10 shrink-0">
+                  <div className={`w-2.5 h-2.5 rounded-full mt-3.5 shrink-0 ${
+                    activity.status === "completed" ? "bg-emerald-500" :
+                    activity.status === "booked" ? "bg-blue-400" : "bg-amber-400"
+                  }`} />
+                  {i < activities.length - 1 && (
+                    <div className="w-px flex-1 bg-border/60 min-h-[16px]" />
+                  )}
+                </div>
+
+                {/* Activity card */}
+                <Card className="flex-1 mb-2 rounded-xl border-border/40 transition-shadow duration-200 hover:shadow-md">
+                  <CardContent className="p-3">
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex-1 min-w-0">
                         <span
                           className={`text-sm font-medium leading-snug ${
                             activity.status === "completed"
@@ -338,38 +349,38 @@ export default function TodayTab({ settings }) {
                         >
                           {activity.name}
                         </span>
-                      </div>
-                      <div className="flex items-center gap-1.5 flex-wrap">
-                        {activity.time && (
-                          <span className="text-[10px] font-bold font-mono bg-primary/15 text-primary px-2 py-0.5 rounded-full">
-                            {formatTime12(activity.time)}
-                          </span>
+                        <div className="flex items-center gap-1.5 flex-wrap mt-1.5">
+                          {activity.time && (
+                            <span className="text-[10px] font-bold font-mono bg-primary/15 text-primary px-2 py-0.5 rounded-full">
+                              {formatTime12(activity.time)}
+                            </span>
+                          )}
+                          <CategoryPill category={activity.category} />
+                        </div>
+                        {activity.location && (
+                          <a
+                            href={getGoogleMapsUrl(activity.location)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-testid={`maps-link-${i}`}
+                            className="text-[11px] text-muted-foreground flex items-center gap-1 mt-1.5 hover:text-primary transition-colors active:text-primary"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <MapPin size={10} />
+                            <span className="underline underline-offset-2">{activity.location}</span>
+                            <ExternalLink size={9} />
+                          </a>
                         )}
-                        <CategoryPill category={activity.category} />
+                        {activity.notes && (
+                          <p className="text-[10px] text-muted-foreground/80 mt-1.5 italic">
+                            {activity.notes}
+                          </p>
+                        )}
                       </div>
-                      {activity.location && (
-                        <a
-                          href={getGoogleMapsUrl(activity.location)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          data-testid={`maps-link-${i}`}
-                          className="text-[11px] text-muted-foreground flex items-center gap-1 mt-1.5 hover:text-primary transition-colors active:text-primary"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <MapPin size={10} />
-                          <span className="underline underline-offset-2">{activity.location}</span>
-                          <ExternalLink size={9} />
-                        </a>
-                      )}
                     </div>
-                  </div>
-                  {activity.notes && (
-                    <p className="text-[10px] text-muted-foreground/80 mt-1.5 italic">
-                      {activity.notes}
-                    </p>
-                  )}
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             ))
           )}
         </div>
