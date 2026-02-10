@@ -349,7 +349,7 @@ export default function TodayTab({ settings }) {
                       </div>
                       {activity.location && (
                         <a
-                          href={getGoogleMapsUrl(activity.location, activity.city)}
+                          href={getGoogleMapsUrl(activity.location)}
                           target="_blank"
                           rel="noopener noreferrer"
                           data-testid={`maps-link-${i}`}
