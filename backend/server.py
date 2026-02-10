@@ -528,7 +528,7 @@ async def generate_ics(date: Optional[str] = None):
         maps_link = ""
         if act.get("location"):
             loc = act["location"].replace(" ", "+")
-            maps_link = f"https://maps.google.com/?q={loc}"
+            maps_link = f"https://www.google.com/maps/place/{loc}"
 
         desc = (act.get("notes") or "") + ("\\n" + maps_link if maps_link else "")
 
